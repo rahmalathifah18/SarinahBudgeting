@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sarinah Budgeting</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #c8102e;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    .login-container {
+      width: 300px;
+      margin: 80px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #c8102e;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #a10d23;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Sarinah Budgeting System</h1>
+  </header>
+
+  <div class="login-container">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <p id="message" style="color:red;"></p>
+  </div>
+
+  <script>
+    function login() {
+      const users = {
+        user: { password: "user123", role: "User" },
+        reviewer: { password: "review123", role: "Reviewer" },
+        approver: { password: "approve123", role: "Approver" }
+      };
+
+      let username = document.getElementById("username").value;
+      let password = document.getElementById("password").value;
+
+      if (users[username] && users[username].password === password) {
+        localStorage.setItem("role", users[username].role);
+        window.location.href = "dashboard.html";
+      } else {
+        document.getElementById("message").innerText = "Invalid login!";
+      }
+    }
+  </script>
+</body>
+</html>
